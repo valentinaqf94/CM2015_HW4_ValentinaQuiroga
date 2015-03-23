@@ -4,8 +4,11 @@
 #include <stdlib.h>
 
 int main(){
+	
+	puts("Diga su nombre aca");
 	char command[100];
 	system("rec -c1 -b16 minombre.wav silence -l 0 1 00:00:3.00 1\%");
 	return 0;
+		
 
 }
