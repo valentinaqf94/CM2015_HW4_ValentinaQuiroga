@@ -21,19 +21,19 @@ ipiales = read.table("ipiales.txt", header = T)
 
 #Crea un vector que guarda estas tres variables
 datos <- c("año","mes", "temperatura")
-bogota <- gather(bogota, mes, temperatura, JAN:DEC, na.rm = TRUE)
+bogota <- gather(bogota, mes, temperatura, JAN:DEC)
 names(bogota)[1] <- "año"
 bogota <- bogota[,datos,drop=FALSE]
-cali <- gather(cali, mes, temperatura, JAN:DEC, na.rm = TRUE)
+cali <- gather(cali, mes, temperatura, JAN:DEC)
 names(cali)[1] <- "año"
 cali <- cali[,datos,drop=FALSE]
-bucaramanga <- gather(bucaramanga, mes, temperatura, JAN:DEC, na.rm = TRUE)
+bucaramanga <- gather(bucaramanga, mes, temperatura, JAN:DEC)
 names(bucaramanga)[1] <- "año"
 bucaramanga <- bucaramanga[,datos,drop=FALSE]
-barranquilla <- gather(barranquilla, mes, temperatura, JAN:DEC, na.rm = TRUE)
+barranquilla <- gather(barranquilla, mes, temperatura, JAN:DEC)
 names(barranquilla)[1] <- "año"
 barranquilla <- barranquilla[,datos,drop=FALSE]
-ipiales <- gather(ipiales, mes, temperatura, JAN:DEC, na.rm = TRUE)
+ipiales <- gather(ipiales, mes, temperatura, JAN:DEC)
 names(ipiales)[1] <- "año"
 ipiales <- ipiales[,datos,drop=FALSE]
 
@@ -61,7 +61,6 @@ print (ipiales)
 df <- rbind(bogota, cali, bucaramanga, barranquilla, ipiales)
 df <- df[c("anio", "mes", "fecha", "ciudad", "temperatura")]
 df[df == 999.9] <- NA
-write.csv(df, file = "temperaturas.csv")
 #guardamos la grafica en un .png aunque tambien se puede visualizar en Rstudio
 
 a <- ggplot(df, aes(x=fecha,y = temperatura, , color=ciudad)) + geom_point(size=3) 
@@ -74,3 +73,4 @@ b <- b + labs(title="Temperatura en algunas Capitales de Colombia 1967-2015") + 
 ggsave(filename='temperaturasbn.png', plot = a)
 print(b)
 
+write.csv(df, file = "temperaturas.csv")
