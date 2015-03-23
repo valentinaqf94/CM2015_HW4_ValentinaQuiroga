@@ -37,23 +37,29 @@ ipiales <- gather(ipiales, mes, temperatura, JAN:DEC, na.rm = TRUE)
 names(ipiales)[1] <- "año"
 ipiales <- ipiales[,datos,drop=FALSE]
 
+
 #Adicion datos  faltantes, como se dijo en clase se asumio que los que no tenian dia era 1 enero del respectivo anio, ademas se agregan columnas nuevas
 
 llenar <- function(x) tolower(x) %in% tolower(month.abb)
 bogota <- mutate(bogota, fecha = paste(año, llenar(mes), "1", sep="/"))
 bogota <- mutate(bogota, ciudad = "Bogota")
+print (bogota)
 cali <- mutate(cali, fecha = paste(año, llenar(mes), "1", sep="/"))
 cali <- mutate(cali, ciudad = "Cali")
+print (cali)
 bucaramanga <- mutate(bucaramanga, fecha = paste(año, llenar(mes), "1", sep="/"))
 bucaramanga <- mutate(bucaramanga, ciudad = "Bucaramanga")
+print (bucaramanga)
 barranquilla <- mutate(barranquilla, fecha = paste(año, llenar(mes), "1", sep="/"))
 barranquilla <- mutate(barranquilla, ciudad = "Barranquilla")
+print (barranquilla)
 ipiales <- mutate(ipiales, fecha = paste(año, llenar(mes), "1", sep="/"))
 ipiales <- mutate(ipiales, ciudad = "Ipiales")
+print (ipiales)
 #armamos un dataset con solo dichas columnas, de aca sale el csv buscado, ademas se aplica tidy data 
 
 df <- rbind(bogota, cali, bucaramanga, barranquilla, ipiales)
-df <- df[c("año", "mes", "fecha", "ciudad", "temperatura")]
+df <- df[c("anio", "mes", "fecha", "ciudad", "temperatura")]
 df[df == 999.9] <- NA
 write.csv(df, file = "temperaturas.csv")
 #guardamos la grafica en un .png aunque tambien se puede visualizar en Rstudio
@@ -67,3 +73,4 @@ b <- ggplot(df, aes(x=fecha,y = temperatura)) + geom_point(size=3)
 b <- b + labs(title="Temperatura en algunas Capitales de Colombia 1967-2015") + facet_grid(~ ciudad, scales = "free")
 ggsave(filename='temperaturasbn.png', plot = a)
 print(b)
+
