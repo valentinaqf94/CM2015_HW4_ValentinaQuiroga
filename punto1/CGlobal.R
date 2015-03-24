@@ -18,25 +18,23 @@ cali = read.table("cali.txt", header = T)
 bucaramanga = read.table("bucar.txt", header = T)
 barranquilla = read.table("bquilla.txt", header = T)
 ipiales = read.table("ipiales.txt", header = T)
-
-#Crea un vector que guarda estas tres variables
 datos <- c("año","mes", "temperatura")
 bogota <- gather(bogota, mes, temperatura, JAN:DEC)
 names(bogota)[1] <- "año"
-bogota <- bogota[,datos,drop=FALSE]
+bogota <- bogota[,datos,drop=F]
 cali <- gather(cali, mes, temperatura, JAN:DEC)
 names(cali)[1] <- "año"
-cali <- cali[,datos,drop=FALSE]
+cali <- cali[,datos,drop=F]
 bucaramanga <- gather(bucaramanga, mes, temperatura, JAN:DEC)
 names(bucaramanga)[1] <- "año"
-bucaramanga <- bucaramanga[,datos,drop=FALSE]
+bucaramanga <- bucaramanga[,datos,drop=F]
 barranquilla <- gather(barranquilla, mes, temperatura, JAN:DEC)
 names(barranquilla)[1] <- "año"
-barranquilla <- barranquilla[,datos,drop=FALSE]
+barranquilla <- barranquilla[,datos,drop=F]
 ipiales <- gather(ipiales, mes, temperatura, JAN:DEC)
 names(ipiales)[1] <- "año"
-ipiales <- ipiales[,datos,drop=FALSE]
-
+ipiales <- ipiales[,datos,drop=F]
+#Crea un vector que guarda estas tres variables
 
 #Adicion datos  faltantes, como se dijo en clase se asumio que los que no tenian dia era 1 enero del respectivo anio, ademas se agregan columnas nuevas
 
