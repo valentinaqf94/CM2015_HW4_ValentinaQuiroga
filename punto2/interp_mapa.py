@@ -71,7 +71,6 @@ plt.show()
 
 
 plt.title ('Interpolacion') #grafica en contornos de los datos, los limites van dados por los mismos datos de la tabla
-#plt.imshow(data, cmap=plt.get_cmap('spectral'), interpolation ='nearest') 
 plt.xlabel(LON.long_name    + ' (' + LON.units    + ')')
 plt.ylabel(LAT.long_name    + ' (' + LAT.units    + ')')
 plt.contourf(lonvals, latvals, data,cmap=plt.get_cmap('Reds'), interpolation = 'nearest')
