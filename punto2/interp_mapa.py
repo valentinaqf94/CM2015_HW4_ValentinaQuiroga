@@ -10,6 +10,7 @@ import scipy as sp
 from scipy import interpolate
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
+#para ver ambas imagenes CIERRE primero la que se genera al principio, la siguiente surgira despues de esta accion.
 
 # <codecell>
 
@@ -81,6 +82,10 @@ plt.show()
 
 
 
+
+# <headingcell level=4>
+
+# Vemos que el cambio de imagen interpolada a imagen normal se da en la mayor nitidez que tiene la imagen.
 
 # <codecell>
 
