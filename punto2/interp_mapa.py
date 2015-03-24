@@ -3,7 +3,6 @@
 
 # <codecell>
 
-#%pylab inline
 from __future__ import print_function 
 import netCDF4
 import numpy as np
@@ -65,13 +64,23 @@ plt.show()
 
 # <headingcell level=3>
 
-
-# <headingcell level=6>
-
+# Interpolación Nearest Neighbors
 
 # <codecell>
 
-                                    
+
+plt.title ('Interpolacion') #grafica en contornos de los datos, los limites van dados por los mismos datos de la tabla
+#plt.imshow(data, cmap=plt.get_cmap('spectral'), interpolation ='nearest') 
+plt.xlabel(LON.long_name    + ' (' + LON.units    + ')')
+plt.ylabel(LAT.long_name    + ' (' + LAT.units    + ')')
+plt.contourf(lonvals, latvals, data,cmap=plt.get_cmap('Reds'), interpolation = 'nearest')
+plt.colorbar()
+mapa = Basemap(lon_0=180)#dibuja el mapa con basemap 
+mapa.drawcoastlines()
+plt.show()
+
+
+
 
 # <codecell>
 
